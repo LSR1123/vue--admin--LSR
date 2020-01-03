@@ -101,31 +101,28 @@ export const constantRoutes = [
       }
     ]
   },
+  
   {
-    path: '/category',
+    path: '/page',
+    //component: () => import('@/page/nested/index.vue'), // Parent router-view
     component: Layout,
+    name: 'Form',
+    meta: { title: '系统配置', icon: 'user' },
     children: [
       {
-        path: 'list',
-        name: 'Form',
+        path: '/page/category',
         component: () => import('@/page/category/list.vue'),
-        meta: { title: '栏目管理', icon: 'user' }
-      }
-    ]
-  },
-  {
-    path: '/product',
-    component: Layout,
-    children: [
+        name: '栏目管理',
+        meta: { title: '栏目管理' }
+      },
       {
-        path: 'list',
-        name: 'Form',
+        path: '/page/product',
         component: () => import('@/page/product/list.vue'),
-        meta: { title: '产品管理', icon: 'user' }
-      }
+        name: '产品管理',
+        meta: { title: '产品管理' }
+      },
     ]
-  },
-
+},
  
 
   // 404 page must be placed at the end !!!
