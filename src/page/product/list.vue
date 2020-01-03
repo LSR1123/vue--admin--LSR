@@ -14,7 +14,6 @@
                 <template v-slot="slot">
                   <a href="" @click.prevent="toDeleteHandler(slot.row.id)">删除</a>
                   <a href="" @click.prevent="toUpdateHandler(slot.row)">修改</a>
-                  <a href="" @click.prevent="toUpdateHandler(slot.row)">详情</a>
 
               </template>
            </el-table-column>
@@ -31,30 +30,41 @@
             :visible.sync="visible"
             width="60%">
             <el-form :model=form label-width="80px">
-                <el-form-item label="用户名">
-                    <el-input v-model="form.username"/>
+                <el-form-item label="名称">
+                    <el-input v-model="form.name"/>
                 </el-form-item>
-                <el-form-item label="密码">
-                    <el-input type="password" v-model="form.password"/>
+                <el-form-item label="价格">
+                    <el-input v-model="form.price"/>
                 </el-form-item>
-                <el-form-item label="姓名">
-                    <el-input v-model="form.realname"/>
+                <el-form-item label="所属产品">
+                    <el-dropdown>
+                        <el-button  v-model="form.categoryId">
+                            请选择<i class="el-icon-arrow-down el-icon--right"></i>
+                        </el-button>
+                    <el-dropdown-menu slot="dropdown"> 
+                        <el-dropdown-item>12</el-dropdown-item>
+                          <el-dropdown-item>家居洗护</el-dropdown-item>
+                          <el-dropdown-item>9357</el-dropdown-item>
+                          <el-dropdown-item>洗护服务</el-dropdown-item>
+                          <el-dropdown-item>生活急救箱</el-dropdown-item>
+                          <el-dropdown-item>yyy</el-dropdown-item>
+                          <el-dropdown-item>水果慢羊羊</el-dropdown-item>
+                          <el-dropdown-item>wxj</el-dropdown-item>
+                          <el-dropdown-item>www</el-dropdown-item>
+                          <el-dropdown-item>123</el-dropdown-item>
+                          <el-dropdown-item>嗷嗷嗷啊</el-dropdown-item>
+                     </el-dropdown-menu>
+                    </el-dropdown>
                 </el-form-item>
-                <el-form-item label="性别">
-                    <el-radio-group v-model="form.gender">
-                        <el-radio label="男">男</el-radio>
-                        <el-radio label="女">女</el-radio>
-                    </el-radio-group>
+                  <el-form-item label="介绍">
+                    <el-input  type="textarea" rows="2" placeholder="请输入内容" v-model="form.description"/>
                 </el-form-item>
-                <el-form-item label="手机号">
-                    <el-input v-model="form.telephone"/>
+                 <el-form-item label="产品主图">
+                     <el-button type="primary" v-model="form.photo">
+                         点击上传<i class="el-icon-upload el-icon--right"></i>
+                     </el-button>
                 </el-form-item>
-                <el-form-item label="身份证号">
-                    <el-input v-model="form.idCard"/>
-                </el-form-item>
-                <el-form-item label="银行卡号">
-                    <el-input v-model="form.bankCard"/>
-                </el-form-item>
+                只能上传jpg/png文件，且不超过500kb
             </el-form>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="closModleHandler" >取 消</el-button>
